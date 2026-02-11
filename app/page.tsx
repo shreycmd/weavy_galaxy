@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { prisma } from "@/lib/db";
 
-export default function Home() {
+export default async function Home() {
+  const users = await prisma.user.findMany();
+  console.log(users);
+
   return (
     <div>
       {" "}
       <div className="text-red-100">weavy_clone</div>
-      <Button className="outline-none">click me</Button>
     </div>
   );
 }
