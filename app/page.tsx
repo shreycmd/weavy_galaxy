@@ -1,13 +1,9 @@
-import { prisma } from "@/lib/db";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  const users = await prisma.user.findMany();
-  console.log(users);
+  // const users = await prisma.user.findMany();
+  // console.log(users);
 
-  return (
-    <div>
-      {" "}
-      <div className="text-red-100">weavy_clone</div>
-    </div>
-  );
+  return redirect("/canvas");
 }

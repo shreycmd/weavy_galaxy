@@ -51,7 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Project: 'Project',
+  UsertoProject: 'UsertoProject',
+  WorkFlowInfo: 'WorkFlowInfo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,12 +75,45 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  name: 'name',
-  createdAt: 'createdAt'
+  emailAddress: 'emailAddress',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  imageUrl: 'imageUrl',
+  credits: 'credits',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const ProjectScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const UsertoProjectScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  projectId: 'projectId'
+} as const
+
+export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)[keyof typeof UsertoProjectScalarFieldEnum]
+
+
+export const WorkFlowInfoScalarFieldEnum = {
+  id: 'id'
+} as const
+
+export type WorkFlowInfoScalarFieldEnum = (typeof WorkFlowInfoScalarFieldEnum)[keyof typeof WorkFlowInfoScalarFieldEnum]
 
 
 export const SortOrder = {
