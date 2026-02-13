@@ -26,28 +26,34 @@ export type AggregateWorkFlowInfo = {
 
 export type WorkFlowInfoMinAggregateOutputType = {
   id: string | null
+  name: string | null
 }
 
 export type WorkFlowInfoMaxAggregateOutputType = {
   id: string | null
+  name: string | null
 }
 
 export type WorkFlowInfoCountAggregateOutputType = {
   id: number
+  name: number
   _all: number
 }
 
 
 export type WorkFlowInfoMinAggregateInputType = {
   id?: true
+  name?: true
 }
 
 export type WorkFlowInfoMaxAggregateInputType = {
   id?: true
+  name?: true
 }
 
 export type WorkFlowInfoCountAggregateInputType = {
   id?: true
+  name?: true
   _all?: true
 }
 
@@ -125,6 +131,7 @@ export type WorkFlowInfoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type WorkFlowInfoGroupByOutputType = {
   id: string
+  name: string
   _count: WorkFlowInfoCountAggregateOutputType | null
   _min: WorkFlowInfoMinAggregateOutputType | null
   _max: WorkFlowInfoMaxAggregateOutputType | null
@@ -150,10 +157,12 @@ export type WorkFlowInfoWhereInput = {
   OR?: Prisma.WorkFlowInfoWhereInput[]
   NOT?: Prisma.WorkFlowInfoWhereInput | Prisma.WorkFlowInfoWhereInput[]
   id?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  name?: Prisma.StringFilter<"WorkFlowInfo"> | string
 }
 
 export type WorkFlowInfoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoWhereUniqueInput = Prisma.AtLeast<{
@@ -161,10 +170,12 @@ export type WorkFlowInfoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.WorkFlowInfoWhereInput | Prisma.WorkFlowInfoWhereInput[]
   OR?: Prisma.WorkFlowInfoWhereInput[]
   NOT?: Prisma.WorkFlowInfoWhereInput | Prisma.WorkFlowInfoWhereInput[]
+  name?: Prisma.StringFilter<"WorkFlowInfo"> | string
 }, "id">
 
 export type WorkFlowInfoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   _count?: Prisma.WorkFlowInfoCountOrderByAggregateInput
   _max?: Prisma.WorkFlowInfoMaxOrderByAggregateInput
   _min?: Prisma.WorkFlowInfoMinOrderByAggregateInput
@@ -175,73 +186,89 @@ export type WorkFlowInfoScalarWhereWithAggregatesInput = {
   OR?: Prisma.WorkFlowInfoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.WorkFlowInfoScalarWhereWithAggregatesInput | Prisma.WorkFlowInfoScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"WorkFlowInfo"> | string
+  name?: Prisma.StringWithAggregatesFilter<"WorkFlowInfo"> | string
 }
 
 export type WorkFlowInfoCreateInput = {
   id?: string
+  name: string
 }
 
 export type WorkFlowInfoUncheckedCreateInput = {
   id?: string
+  name: string
 }
 
 export type WorkFlowInfoUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WorkFlowInfoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WorkFlowInfoCreateManyInput = {
   id?: string
+  name: string
 }
 
 export type WorkFlowInfoUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WorkFlowInfoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type WorkFlowInfoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
 }
 
 
 
 export type WorkFlowInfoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectScalar = {
   id?: boolean
+  name?: boolean
 }
 
-export type WorkFlowInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id", ExtArgs["result"]["workFlowInfo"]>
+export type WorkFlowInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["workFlowInfo"]>
 
 export type $WorkFlowInfoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "WorkFlowInfo"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    name: string
   }, ExtArgs["result"]["workFlowInfo"]>
   composites: {}
 }
@@ -666,6 +693,7 @@ export interface Prisma__WorkFlowInfoClient<T, Null = never, ExtArgs extends run
  */
 export interface WorkFlowInfoFieldRefs {
   readonly id: Prisma.FieldRef<"WorkFlowInfo", 'String'>
+  readonly name: Prisma.FieldRef<"WorkFlowInfo", 'String'>
 }
     
 
@@ -860,7 +888,7 @@ export type WorkFlowInfoCreateArgs<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * The data needed to create a WorkFlowInfo.
    */
-  data?: Prisma.XOR<Prisma.WorkFlowInfoCreateInput, Prisma.WorkFlowInfoUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.WorkFlowInfoCreateInput, Prisma.WorkFlowInfoUncheckedCreateInput>
 }
 
 /**

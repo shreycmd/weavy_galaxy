@@ -779,7 +779,8 @@ export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)
 
 
 export const WorkFlowInfoScalarFieldEnum = {
-  id: 'id'
+  id: 'id',
+  name: 'name'
 } as const
 
 export type WorkFlowInfoScalarFieldEnum = (typeof WorkFlowInfoScalarFieldEnum)[keyof typeof WorkFlowInfoScalarFieldEnum]

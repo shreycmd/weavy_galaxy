@@ -48,5 +48,6 @@ model UsertoProject {
 }
 
 model WorkFlowInfo {
-  id String @id @default(cuid())
+  id   String @id @default(cuid())
+  name String
 }

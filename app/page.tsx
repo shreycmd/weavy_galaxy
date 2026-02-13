@@ -1,8 +1,40 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { useTRPC } from "@/trpc/client";
+import { getQueryClient, trpc } from "@/trpc/server";
+import {
+  dehydrate,
+  HydrationBoundary,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { redirect } from "next/navigation";
 
-export default async function Home() {
+export default function Home() {
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+  const { data } = useQuery(trpc.getWorkFlows.queryOptions());
+  const create = useMutation(
+    trpc.createWorkFlow.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries(trpc.getWorkFlows.queryOptions());
+      },
+    }),
+  );
   // const users = await prisma.user.findMany();
   // console.log(users);
+  // const queryClient=getQueryClient()
+  // void queryClient.prefetchQuery(trpc.)
+  return (
+    // <HydrationBoundary state={dehydrate(queryClient)}>
 
-  return redirect("/canvas");
+    // </HydrationBoundary>
+    <div className=" min-h-screen min-w-screen flex items-center justify-center flex-col gap-y-6">
+      {JSON.stringify(data, null, 2)}
+      <Button disabled={create.isPending} onClick={() => create.mutate()}>
+        cretae wrokflow
+      </Button>
+    </div>
+  );
 }
