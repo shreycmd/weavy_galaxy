@@ -22,6 +22,7 @@ export default function Home() {
       },
     }),
   );
+  const aiTest = useMutation(trpc.testAi.mutationOptions());
   // const users = await prisma.user.findMany();
   // console.log(users);
   // const queryClient=getQueryClient()
@@ -32,6 +33,9 @@ export default function Home() {
     // </HydrationBoundary>
     <div className=" min-h-screen min-w-screen flex items-center justify-center flex-col gap-y-6">
       {JSON.stringify(data, null, 2)}
+      <Button disabled={aiTest.isPending} onClick={() => aiTest.mutate()}>
+        test ai
+      </Button>
       <Button disabled={create.isPending} onClick={() => create.mutate()}>
         cretae wrokflow
       </Button>
