@@ -10,7 +10,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { SignedOut, SignOutButton } from "@clerk/nextjs";
+import img from "../favicon.ico";
+import { SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
 import {
   CreditCardIcon,
   LogOutIcon,
@@ -18,18 +19,21 @@ import {
   KeyIcon,
   HistoryIcon,
   FolderOpenIcon,
+  PlusIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { title } from "process";
+import { cn } from "@/lib/utils";
+import { useCreateWorkflows } from "../features/workflows/hooks/use-workflows";
 const menuItems = [
   {
     title: "WorkFlows",
     items: [
       {
-        title: "WorkFlows",
+        title: "Projects",
         icon: FolderOpenIcon,
         url: "/workflows",
       },
@@ -49,23 +53,54 @@ const menuItems = [
 
 const AppSidebar = () => {
   const router = useRouter;
+  const createworkflows = useCreateWorkflows();
   const pathnaame = usePathname();
+  const { user } = useUser();
+  console.log("info on user ", user?.fullName, user?.imageUrl);
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           {" "}
-          <SidebarMenuItem>
+          {/* <SidebarMenuItem>
             <SidebarMenuButton asChild className="gap-x-4 h-10 px-4">
               <Link href="/">
-                {/* <Image src="dnd" alt="Weavy" width={30} height={30} /> */}
+
                 <span className="font-semibold text-sm">Weavy.ai</span>
               </Link>
             </SidebarMenuButton>
+          </SidebarMenuItem> */}
+          <SidebarMenuItem>
+            <div className="gap-x-4 h-10 px-4 flex items-center">
+              <Image
+                src={user?.imageUrl ?? img}
+                width={40}
+                height={40}
+                alt="img"
+                className="rounded-full "
+              />
+              <div>{user?.fullName}</div>
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        <SidebarMenuItem className="px-2">
+          <SidebarMenuButton
+            onClick={() => {
+              createworkflows.mutate(undefined, {
+                onError: (error) => {
+                  // handleError(error)
+                  console.error(error);
+                },
+              });
+            }}
+            className="gap-x-4 h-10  !bg-[#f7ffa8] text-black px-10 "
+          >
+            <PlusIcon className="size-3" />
+            <span>Create new file</span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
         {menuItems.map((group) => (
           <SidebarGroup key={group.title}>
             <SidebarGroupContent>

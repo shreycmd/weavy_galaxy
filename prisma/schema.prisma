@@ -23,6 +23,7 @@ model User {
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt
   usertoProjects UsertoProject[]
+  workFlowInfos  WorkFlowInfo[]
 }
 
 model Project {
@@ -48,6 +49,49 @@ model UsertoProject {
 }
 
 model WorkFlowInfo {
-  id   String @id @default(cuid())
-  name String
+  nodes       Node[]
+  connections Connections[]
+  id          String        @id @default(cuid())
+  name        String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum NodeType {
+  Inital
+}
+
+model Node {
+  id                String        @id @default(cuid())
+  workflowId        String
+  workflow          WorkFlowInfo  @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  name              String
+  type              NodeType
+  position          Json
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  data              Json          @default("{}")
+  connections       Connections[]
+  OutputConnections Connections[] @relation("FromNode")
+  inputConnections  Connections[] @relation("ToNode")
+}
+
+model Connections {
+  id         String       @id @default(cuid())
+  workflowId String
+  workflow   WorkFlowInfo @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  fromNodeId String
+  fromNode   Node         @relation("FromNode", fields: [fromNodeId], references: [id], onDelete: Cascade)
+  toNodeId   String
+  toNode     Node         @relation("ToNode", fields: [toNodeId], references: [id], onDelete: Cascade)
+  fromOutput String       @default("main")
+  toInput    String       @default("main")
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  node       Node?        @relation(fields: [nodeId], references: [id])
+  nodeId     String?
+
+  @@unique([fromNodeId, toNodeId, fromOutput, toInput])
 }

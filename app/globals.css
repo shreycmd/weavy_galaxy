@@ -70,22 +70,22 @@
 
 :root {
   --radius: 0.425rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.3211 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.3211 0 0);
+  --background: #0e0e13;
+  --foreground: oklch(100% 0.00011 271.152);
+  --card: #212126;
+  --card-foreground:oklch(100% 0.00011 271.152) ;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.3211 0 0);
-  --primary: oklch(0.6397 0.172 36.4421);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.967 0.0029 264.5419);
-  --secondary-foreground: oklch(0.425461 0.0263 256.8018);
-  --muted: oklch(0.9846 0.0017 247.8389);
-  --muted-foreground: oklch(0.551 0.0234 264.3637);
-  --accent: oklch(0.922 0 0);
+  --primary: oklch(93.312% 0.19156 117.725);
+  --primary-foreground:#212126;
+  --secondary: #212126;
+  --secondary-foreground: oklch(52.302% 0.11899 256.77);
+  --muted: #212126;
+  --muted-foreground: oklch(48.402% 0.16848 262.284);
+  --accent: #212126;
   --accent-foreground: oklch(0.371 0 0);
   --destructive: oklch(0.6368 0.2078 25.3313);
-  --border: oklch(0.9022 0.0052 247.8822);
+  --border: oklch(30.456% 0.00232 248.245);
   --input: oklch(0.97 0.0029 264.542);
   --ring: oklch(0.6397 0.172 36.4421);
   --chart-1: oklch(0.7156 0.0605 248.6845);
@@ -93,15 +93,15 @@
   --chart-3: oklch(0.5778 0.0759 254.1573);
   --chart-4: oklch(0.5016 0.0849 259.4902);
   --chart-5: oklch(0.425241 0.0952 264.0306);
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.3211 0 0);
+  --sidebar: #0e0e13;
+  --sidebar-foreground: oklch(100% 0.00011 271.152);
   --sidebar-primary: oklch(0.6397 0.172 36.4421);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.922 0 0);
-  --sidebar-accent-foreground: oklch(0.371 0 0);
-  --sidebar-border: oklch(0.9276 0.0058 264.5313);
+  --sidebar-accent: #212126;
+  --sidebar-accent-foreground: oklch(94.251% 0.00755 16.511);
+  --sidebar-border: oklch(25.574% 0.0081 264.454);
   --sidebar-ring: oklch(0.6397 0.172 36.4421);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive-foreground: oklch(44.784% 0.16574 27.183);
   --font-sans: Inter, sans-serif;
   --font-serif: Source Serif 4, serif;
   --font-mono: JetBrains Mono, monospace;
@@ -127,10 +127,26 @@
     0px 8px 10px -1px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0px 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
+  .react-flow__node {
+  background: #212126;
+  color: white;
+  border: 1px solid #333;
+}
+.react-flow__controls {
+  background: #212126;
+  border: 1px solid #2a2a30;
+}
+
+.react-flow__controls button {
+  background: #212126;
+  color: white;
+}
+
+
 }
 
 .dark {
-  --background: oklch(0.2598 0.0306 262.6666);
+  --background: #0e0e13;
   --foreground: oklch(0.9219 0 0);
   --card: oklch(0.3106 0.0301 268.6365);
   --card-foreground: oklch(0.9219 0 0);

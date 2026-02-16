@@ -1,7 +1,32 @@
-import React from "react";
-
+import {
+  EntityContainer,
+  ErrorView,
+} from "@/app/_components/entity-components";
+import {
+  WorkFlowError,
+  WorkFlowList,
+  WorkFlowLoading,
+  WorkFlowsContainer,
+} from "@/app/features/workflows/components/workflows";
+import { prefethWorkflows } from "@/app/features/workflows/server/prfetch";
+import { HydrateClient } from "@/trpc/server";
+import { error } from "console";
+import React, { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 const Workflows = () => {
-  return <div className="bg-red-900">Workflows</div>;
+  prefethWorkflows();
+  return (
+    <WorkFlowsContainer>
+      <HydrateClient>
+        <ErrorBoundary fallback={<WorkFlowError />}>
+          <Suspense fallback={<WorkFlowLoading />}>
+            <WorkFlowList />
+          </Suspense>
+        </ErrorBoundary>
+      </HydrateClient>
+      {/* <WorkFlowList /> */}
+    </WorkFlowsContainer>
+  );
 };
 
 export default Workflows;

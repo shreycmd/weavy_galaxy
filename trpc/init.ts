@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { cache } from "react";
-// import superjson from "superjson";
+import superjson from "superjson";
 import { ZodError } from "zod";
 export const createTRPCContext = cache(async () => {
   const { userId } = await auth();
@@ -15,7 +15,7 @@ export const createTRPCContext = cache(async () => {
 const t = initTRPC
   .context<Awaited<ReturnType<typeof createTRPCContext>>>()
   .create({
-    // transformer: superjson,
+    transformer: superjson,
     errorFormatter({ shape, error }) {
       return {
         ...shape,

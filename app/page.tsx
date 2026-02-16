@@ -1,44 +1,32 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { useTRPC } from "@/trpc/client";
-import { getQueryClient, trpc } from "@/trpc/server";
 import {
-  dehydrate,
-  HydrationBoundary,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+  EntityContainer,
+  ErrorView,
+} from "@/app/_components/entity-components";
+import {
+  WorkFlowError,
+  WorkFlowList,
+  WorkFlowLoading,
+  WorkFlowsContainer,
+} from "@/app/features/workflows/components/workflows";
+import { prefethWorkflows } from "@/app/features/workflows/server/prfetch";
+import { HydrateClient } from "@/trpc/server";
+import { error } from "console";
 import { redirect } from "next/navigation";
+import React, { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+const Workflows = () => {
+  prefethWorkflows();
+  return redirect("/workflows");
+  // <WorkFlowsContainer>
+  //   <HydrateClient>
+  //     <ErrorBoundary fallback={<WorkFlowError />}>
+  //       <Suspense fallback={<WorkFlowLoading />}>
+  //         <WorkFlowList />
+  //       </Suspense>
+  //     </ErrorBoundary>
+  //   </HydrateClient>
+  //   {/* <WorkFlowList /> */}
+  // </WorkFlowsContainer>
+};
 
-export default function Home() {
-  const trpc = useTRPC();
-  const queryClient = useQueryClient();
-  const { data } = useQuery(trpc.getWorkFlows.queryOptions());
-  const create = useMutation(
-    trpc.createWorkFlow.mutationOptions({
-      onSuccess: () => {
-        queryClient.invalidateQueries(trpc.getWorkFlows.queryOptions());
-      },
-    }),
-  );
-  const aiTest = useMutation(trpc.testAi.mutationOptions());
-  // const users = await prisma.user.findMany();
-  // console.log(users);
-  // const queryClient=getQueryClient()
-  // void queryClient.prefetchQuery(trpc.)
-  return (
-    // <HydrationBoundary state={dehydrate(queryClient)}>
-
-    // </HydrationBoundary>
-    <div className=" min-h-screen min-w-screen flex items-center justify-center flex-col gap-y-6">
-      {JSON.stringify(data, null, 2)}
-      <Button disabled={aiTest.isPending} onClick={() => aiTest.mutate()}>
-        test ai
-      </Button>
-      <Button disabled={create.isPending} onClick={() => create.mutate()}>
-        cretae wrokflow
-      </Button>
-    </div>
-  );
-}
+export default Workflows;

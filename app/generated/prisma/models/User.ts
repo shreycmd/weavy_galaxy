@@ -241,6 +241,7 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   usertoProjects?: Prisma.UsertoProjectListRelationFilter
+  workFlowInfos?: Prisma.WorkFlowInfoListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -253,6 +254,7 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   usertoProjects?: Prisma.UsertoProjectOrderByRelationAggregateInput
+  workFlowInfos?: Prisma.WorkFlowInfoOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -268,6 +270,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   usertoProjects?: Prisma.UsertoProjectListRelationFilter
+  workFlowInfos?: Prisma.WorkFlowInfoListRelationFilter
 }, "id" | "emailAddress">
 
 export type UserOrderByWithAggregationInput = {
@@ -310,6 +313,7 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usertoProjects?: Prisma.UsertoProjectCreateNestedManyWithoutUserInput
+  workFlowInfos?: Prisma.WorkFlowInfoCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -322,6 +326,7 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usertoProjects?: Prisma.UsertoProjectUncheckedCreateNestedManyWithoutUserInput
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -334,6 +339,7 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usertoProjects?: Prisma.UsertoProjectUpdateManyWithoutUserNestedInput
+  workFlowInfos?: Prisma.WorkFlowInfoUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -346,6 +352,7 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usertoProjects?: Prisma.UsertoProjectUncheckedUpdateManyWithoutUserNestedInput
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -461,6 +468,20 @@ export type UserUpdateOneRequiredWithoutUsertoProjectsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUsertoProjectsInput, Prisma.UserUpdateWithoutUsertoProjectsInput>, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
 }
 
+export type UserCreateNestedOneWithoutWorkFlowInfosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWorkFlowInfosInput, Prisma.UserUncheckedCreateWithoutWorkFlowInfosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWorkFlowInfosInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutWorkFlowInfosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWorkFlowInfosInput, Prisma.UserUncheckedCreateWithoutWorkFlowInfosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWorkFlowInfosInput
+  upsert?: Prisma.UserUpsertWithoutWorkFlowInfosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWorkFlowInfosInput, Prisma.UserUpdateWithoutWorkFlowInfosInput>, Prisma.UserUncheckedUpdateWithoutWorkFlowInfosInput>
+}
+
 export type UserCreateWithoutUsertoProjectsInput = {
   id?: string
   emailAddress: string
@@ -470,6 +491,7 @@ export type UserCreateWithoutUsertoProjectsInput = {
   credits?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUsertoProjectsInput = {
@@ -481,6 +503,7 @@ export type UserUncheckedCreateWithoutUsertoProjectsInput = {
   credits?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUsertoProjectsInput = {
@@ -508,6 +531,7 @@ export type UserUpdateWithoutUsertoProjectsInput = {
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUsertoProjectsInput = {
@@ -519,6 +543,71 @@ export type UserUncheckedUpdateWithoutUsertoProjectsInput = {
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutWorkFlowInfosInput = {
+  id?: string
+  emailAddress: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  credits?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usertoProjects?: Prisma.UsertoProjectCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutWorkFlowInfosInput = {
+  id?: string
+  emailAddress: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  credits?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usertoProjects?: Prisma.UsertoProjectUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutWorkFlowInfosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutWorkFlowInfosInput, Prisma.UserUncheckedCreateWithoutWorkFlowInfosInput>
+}
+
+export type UserUpsertWithoutWorkFlowInfosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutWorkFlowInfosInput, Prisma.UserUncheckedUpdateWithoutWorkFlowInfosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutWorkFlowInfosInput, Prisma.UserUncheckedCreateWithoutWorkFlowInfosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutWorkFlowInfosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutWorkFlowInfosInput, Prisma.UserUncheckedUpdateWithoutWorkFlowInfosInput>
+}
+
+export type UserUpdateWithoutWorkFlowInfosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usertoProjects?: Prisma.UsertoProjectUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutWorkFlowInfosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usertoProjects?: Prisma.UsertoProjectUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -528,10 +617,12 @@ export type UserUncheckedUpdateWithoutUsertoProjectsInput = {
 
 export type UserCountOutputType = {
   usertoProjects: number
+  workFlowInfos: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usertoProjects?: boolean | UserCountOutputTypeCountUsertoProjectsArgs
+  workFlowInfos?: boolean | UserCountOutputTypeCountWorkFlowInfosArgs
 }
 
 /**
@@ -551,6 +642,13 @@ export type UserCountOutputTypeCountUsertoProjectsArgs<ExtArgs extends runtime.T
   where?: Prisma.UsertoProjectWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountWorkFlowInfosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WorkFlowInfoWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -562,6 +660,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   usertoProjects?: boolean | Prisma.User$usertoProjectsArgs<ExtArgs>
+  workFlowInfos?: boolean | Prisma.User$workFlowInfosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -601,6 +700,7 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "emailAddress" | "firstName" | "lastName" | "imageUrl" | "credits" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usertoProjects?: boolean | Prisma.User$usertoProjectsArgs<ExtArgs>
+  workFlowInfos?: boolean | Prisma.User$workFlowInfosArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -610,6 +710,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     usertoProjects: Prisma.$UsertoProjectPayload<ExtArgs>[]
+    workFlowInfos: Prisma.$WorkFlowInfoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1015,6 +1116,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   usertoProjects<T extends Prisma.User$usertoProjectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$usertoProjectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsertoProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  workFlowInfos<T extends Prisma.User$workFlowInfosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$workFlowInfosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkFlowInfoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1461,6 +1563,30 @@ export type User$usertoProjectsArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.UsertoProjectScalarFieldEnum | Prisma.UsertoProjectScalarFieldEnum[]
+}
+
+/**
+ * User.workFlowInfos
+ */
+export type User$workFlowInfosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkFlowInfo
+   */
+  select?: Prisma.WorkFlowInfoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WorkFlowInfo
+   */
+  omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  where?: Prisma.WorkFlowInfoWhereInput
+  orderBy?: Prisma.WorkFlowInfoOrderByWithRelationInput | Prisma.WorkFlowInfoOrderByWithRelationInput[]
+  cursor?: Prisma.WorkFlowInfoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WorkFlowInfoScalarFieldEnum | Prisma.WorkFlowInfoScalarFieldEnum[]
 }
 
 /**

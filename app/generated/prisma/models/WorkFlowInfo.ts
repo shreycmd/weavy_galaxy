@@ -27,16 +27,25 @@ export type AggregateWorkFlowInfo = {
 export type WorkFlowInfoMinAggregateOutputType = {
   id: string | null
   name: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  userId: string | null
 }
 
 export type WorkFlowInfoMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  userId: string | null
 }
 
 export type WorkFlowInfoCountAggregateOutputType = {
   id: number
   name: number
+  createdAt: number
+  updatedAt: number
+  userId: number
   _all: number
 }
 
@@ -44,16 +53,25 @@ export type WorkFlowInfoCountAggregateOutputType = {
 export type WorkFlowInfoMinAggregateInputType = {
   id?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
+  userId?: true
 }
 
 export type WorkFlowInfoMaxAggregateInputType = {
   id?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
+  userId?: true
 }
 
 export type WorkFlowInfoCountAggregateInputType = {
   id?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
+  userId?: true
   _all?: true
 }
 
@@ -132,6 +150,9 @@ export type WorkFlowInfoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type WorkFlowInfoGroupByOutputType = {
   id: string
   name: string
+  createdAt: Date
+  updatedAt: Date
+  userId: string
   _count: WorkFlowInfoCountAggregateOutputType | null
   _min: WorkFlowInfoMinAggregateOutputType | null
   _max: WorkFlowInfoMaxAggregateOutputType | null
@@ -158,11 +179,23 @@ export type WorkFlowInfoWhereInput = {
   NOT?: Prisma.WorkFlowInfoWhereInput | Prisma.WorkFlowInfoWhereInput[]
   id?: Prisma.StringFilter<"WorkFlowInfo"> | string
   name?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  createdAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  userId?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  nodes?: Prisma.NodeListRelationFilter
+  connections?: Prisma.ConnectionsListRelationFilter
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type WorkFlowInfoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  nodes?: Prisma.NodeOrderByRelationAggregateInput
+  connections?: Prisma.ConnectionsOrderByRelationAggregateInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type WorkFlowInfoWhereUniqueInput = Prisma.AtLeast<{
@@ -171,11 +204,20 @@ export type WorkFlowInfoWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.WorkFlowInfoWhereInput[]
   NOT?: Prisma.WorkFlowInfoWhereInput | Prisma.WorkFlowInfoWhereInput[]
   name?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  createdAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  userId?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  nodes?: Prisma.NodeListRelationFilter
+  connections?: Prisma.ConnectionsListRelationFilter
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type WorkFlowInfoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   _count?: Prisma.WorkFlowInfoCountOrderByAggregateInput
   _max?: Prisma.WorkFlowInfoMaxOrderByAggregateInput
   _min?: Prisma.WorkFlowInfoMinOrderByAggregateInput
@@ -187,88 +229,479 @@ export type WorkFlowInfoScalarWhereWithAggregatesInput = {
   NOT?: Prisma.WorkFlowInfoScalarWhereWithAggregatesInput | Prisma.WorkFlowInfoScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"WorkFlowInfo"> | string
   name?: Prisma.StringWithAggregatesFilter<"WorkFlowInfo"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"WorkFlowInfo"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"WorkFlowInfo"> | Date | string
+  userId?: Prisma.StringWithAggregatesFilter<"WorkFlowInfo"> | string
 }
 
 export type WorkFlowInfoCreateInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  nodes?: Prisma.NodeCreateNestedManyWithoutWorkflowInput
+  connections?: Prisma.ConnectionsCreateNestedManyWithoutWorkflowInput
+  user: Prisma.UserCreateNestedOneWithoutWorkFlowInfosInput
 }
 
 export type WorkFlowInfoUncheckedCreateInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  nodes?: Prisma.NodeUncheckedCreateNestedManyWithoutWorkflowInput
+  connections?: Prisma.ConnectionsUncheckedCreateNestedManyWithoutWorkflowInput
 }
 
 export type WorkFlowInfoUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nodes?: Prisma.NodeUpdateManyWithoutWorkflowNestedInput
+  connections?: Prisma.ConnectionsUpdateManyWithoutWorkflowNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutWorkFlowInfosNestedInput
 }
 
 export type WorkFlowInfoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  nodes?: Prisma.NodeUncheckedUpdateManyWithoutWorkflowNestedInput
+  connections?: Prisma.ConnectionsUncheckedUpdateManyWithoutWorkflowNestedInput
 }
 
 export type WorkFlowInfoCreateManyInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
 }
 
 export type WorkFlowInfoUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type WorkFlowInfoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type WorkFlowInfoListRelationFilter = {
+  every?: Prisma.WorkFlowInfoWhereInput
+  some?: Prisma.WorkFlowInfoWhereInput
+  none?: Prisma.WorkFlowInfoWhereInput
+}
+
+export type WorkFlowInfoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type WorkFlowInfoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
+export type WorkFlowInfoScalarRelationFilter = {
+  is?: Prisma.WorkFlowInfoWhereInput
+  isNot?: Prisma.WorkFlowInfoWhereInput
+}
+
+export type WorkFlowInfoCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput> | Prisma.WorkFlowInfoCreateWithoutUserInput[] | Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput | Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.WorkFlowInfoCreateManyUserInputEnvelope
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+}
+
+export type WorkFlowInfoUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput> | Prisma.WorkFlowInfoCreateWithoutUserInput[] | Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput | Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.WorkFlowInfoCreateManyUserInputEnvelope
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+}
+
+export type WorkFlowInfoUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput> | Prisma.WorkFlowInfoCreateWithoutUserInput[] | Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput | Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.WorkFlowInfoUpsertWithWhereUniqueWithoutUserInput | Prisma.WorkFlowInfoUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.WorkFlowInfoCreateManyUserInputEnvelope
+  set?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  disconnect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  delete?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  update?: Prisma.WorkFlowInfoUpdateWithWhereUniqueWithoutUserInput | Prisma.WorkFlowInfoUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.WorkFlowInfoUpdateManyWithWhereWithoutUserInput | Prisma.WorkFlowInfoUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.WorkFlowInfoScalarWhereInput | Prisma.WorkFlowInfoScalarWhereInput[]
+}
+
+export type WorkFlowInfoUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput> | Prisma.WorkFlowInfoCreateWithoutUserInput[] | Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput | Prisma.WorkFlowInfoCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.WorkFlowInfoUpsertWithWhereUniqueWithoutUserInput | Prisma.WorkFlowInfoUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.WorkFlowInfoCreateManyUserInputEnvelope
+  set?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  disconnect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  delete?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput | Prisma.WorkFlowInfoWhereUniqueInput[]
+  update?: Prisma.WorkFlowInfoUpdateWithWhereUniqueWithoutUserInput | Prisma.WorkFlowInfoUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.WorkFlowInfoUpdateManyWithWhereWithoutUserInput | Prisma.WorkFlowInfoUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.WorkFlowInfoScalarWhereInput | Prisma.WorkFlowInfoScalarWhereInput[]
+}
+
+export type WorkFlowInfoCreateNestedOneWithoutNodesInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedCreateWithoutNodesInput>
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutNodesInput
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput
+}
+
+export type WorkFlowInfoUpdateOneRequiredWithoutNodesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedCreateWithoutNodesInput>
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutNodesInput
+  upsert?: Prisma.WorkFlowInfoUpsertWithoutNodesInput
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkFlowInfoUpdateToOneWithWhereWithoutNodesInput, Prisma.WorkFlowInfoUpdateWithoutNodesInput>, Prisma.WorkFlowInfoUncheckedUpdateWithoutNodesInput>
+}
+
+export type WorkFlowInfoCreateNestedOneWithoutConnectionsInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedCreateWithoutConnectionsInput>
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutConnectionsInput
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput
+}
+
+export type WorkFlowInfoUpdateOneRequiredWithoutConnectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedCreateWithoutConnectionsInput>
+  connectOrCreate?: Prisma.WorkFlowInfoCreateOrConnectWithoutConnectionsInput
+  upsert?: Prisma.WorkFlowInfoUpsertWithoutConnectionsInput
+  connect?: Prisma.WorkFlowInfoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkFlowInfoUpdateToOneWithWhereWithoutConnectionsInput, Prisma.WorkFlowInfoUpdateWithoutConnectionsInput>, Prisma.WorkFlowInfoUncheckedUpdateWithoutConnectionsInput>
+}
+
+export type WorkFlowInfoCreateWithoutUserInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  nodes?: Prisma.NodeCreateNestedManyWithoutWorkflowInput
+  connections?: Prisma.ConnectionsCreateNestedManyWithoutWorkflowInput
+}
+
+export type WorkFlowInfoUncheckedCreateWithoutUserInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  nodes?: Prisma.NodeUncheckedCreateNestedManyWithoutWorkflowInput
+  connections?: Prisma.ConnectionsUncheckedCreateNestedManyWithoutWorkflowInput
+}
+
+export type WorkFlowInfoCreateOrConnectWithoutUserInput = {
+  where: Prisma.WorkFlowInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput>
+}
+
+export type WorkFlowInfoCreateManyUserInputEnvelope = {
+  data: Prisma.WorkFlowInfoCreateManyUserInput | Prisma.WorkFlowInfoCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type WorkFlowInfoUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.WorkFlowInfoWhereUniqueInput
+  update: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutUserInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutUserInput, Prisma.WorkFlowInfoUncheckedCreateWithoutUserInput>
+}
+
+export type WorkFlowInfoUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.WorkFlowInfoWhereUniqueInput
+  data: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutUserInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutUserInput>
+}
+
+export type WorkFlowInfoUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.WorkFlowInfoScalarWhereInput
+  data: Prisma.XOR<Prisma.WorkFlowInfoUpdateManyMutationInput, Prisma.WorkFlowInfoUncheckedUpdateManyWithoutUserInput>
+}
+
+export type WorkFlowInfoScalarWhereInput = {
+  AND?: Prisma.WorkFlowInfoScalarWhereInput | Prisma.WorkFlowInfoScalarWhereInput[]
+  OR?: Prisma.WorkFlowInfoScalarWhereInput[]
+  NOT?: Prisma.WorkFlowInfoScalarWhereInput | Prisma.WorkFlowInfoScalarWhereInput[]
+  id?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  name?: Prisma.StringFilter<"WorkFlowInfo"> | string
+  createdAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"WorkFlowInfo"> | Date | string
+  userId?: Prisma.StringFilter<"WorkFlowInfo"> | string
+}
+
+export type WorkFlowInfoCreateWithoutNodesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  connections?: Prisma.ConnectionsCreateNestedManyWithoutWorkflowInput
+  user: Prisma.UserCreateNestedOneWithoutWorkFlowInfosInput
+}
+
+export type WorkFlowInfoUncheckedCreateWithoutNodesInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  connections?: Prisma.ConnectionsUncheckedCreateNestedManyWithoutWorkflowInput
+}
+
+export type WorkFlowInfoCreateOrConnectWithoutNodesInput = {
+  where: Prisma.WorkFlowInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedCreateWithoutNodesInput>
+}
+
+export type WorkFlowInfoUpsertWithoutNodesInput = {
+  update: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutNodesInput>
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedCreateWithoutNodesInput>
+  where?: Prisma.WorkFlowInfoWhereInput
+}
+
+export type WorkFlowInfoUpdateToOneWithWhereWithoutNodesInput = {
+  where?: Prisma.WorkFlowInfoWhereInput
+  data: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutNodesInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutNodesInput>
+}
+
+export type WorkFlowInfoUpdateWithoutNodesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  connections?: Prisma.ConnectionsUpdateManyWithoutWorkflowNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutWorkFlowInfosNestedInput
+}
+
+export type WorkFlowInfoUncheckedUpdateWithoutNodesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  connections?: Prisma.ConnectionsUncheckedUpdateManyWithoutWorkflowNestedInput
+}
+
+export type WorkFlowInfoCreateWithoutConnectionsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  nodes?: Prisma.NodeCreateNestedManyWithoutWorkflowInput
+  user: Prisma.UserCreateNestedOneWithoutWorkFlowInfosInput
+}
+
+export type WorkFlowInfoUncheckedCreateWithoutConnectionsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  nodes?: Prisma.NodeUncheckedCreateNestedManyWithoutWorkflowInput
+}
+
+export type WorkFlowInfoCreateOrConnectWithoutConnectionsInput = {
+  where: Prisma.WorkFlowInfoWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedCreateWithoutConnectionsInput>
+}
+
+export type WorkFlowInfoUpsertWithoutConnectionsInput = {
+  update: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutConnectionsInput>
+  create: Prisma.XOR<Prisma.WorkFlowInfoCreateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedCreateWithoutConnectionsInput>
+  where?: Prisma.WorkFlowInfoWhereInput
+}
+
+export type WorkFlowInfoUpdateToOneWithWhereWithoutConnectionsInput = {
+  where?: Prisma.WorkFlowInfoWhereInput
+  data: Prisma.XOR<Prisma.WorkFlowInfoUpdateWithoutConnectionsInput, Prisma.WorkFlowInfoUncheckedUpdateWithoutConnectionsInput>
+}
+
+export type WorkFlowInfoUpdateWithoutConnectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nodes?: Prisma.NodeUpdateManyWithoutWorkflowNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutWorkFlowInfosNestedInput
+}
+
+export type WorkFlowInfoUncheckedUpdateWithoutConnectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  nodes?: Prisma.NodeUncheckedUpdateManyWithoutWorkflowNestedInput
+}
+
+export type WorkFlowInfoCreateManyUserInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type WorkFlowInfoUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nodes?: Prisma.NodeUpdateManyWithoutWorkflowNestedInput
+  connections?: Prisma.ConnectionsUpdateManyWithoutWorkflowNestedInput
+}
+
+export type WorkFlowInfoUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nodes?: Prisma.NodeUncheckedUpdateManyWithoutWorkflowNestedInput
+  connections?: Prisma.ConnectionsUncheckedUpdateManyWithoutWorkflowNestedInput
+}
+
+export type WorkFlowInfoUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type WorkFlowInfoCountOutputType
+ */
+
+export type WorkFlowInfoCountOutputType = {
+  nodes: number
+  connections: number
+}
+
+export type WorkFlowInfoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  nodes?: boolean | WorkFlowInfoCountOutputTypeCountNodesArgs
+  connections?: boolean | WorkFlowInfoCountOutputTypeCountConnectionsArgs
+}
+
+/**
+ * WorkFlowInfoCountOutputType without action
+ */
+export type WorkFlowInfoCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkFlowInfoCountOutputType
+   */
+  select?: Prisma.WorkFlowInfoCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * WorkFlowInfoCountOutputType without action
+ */
+export type WorkFlowInfoCountOutputTypeCountNodesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NodeWhereInput
+}
+
+/**
+ * WorkFlowInfoCountOutputType without action
+ */
+export type WorkFlowInfoCountOutputTypeCountConnectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConnectionsWhereInput
+}
 
 
 export type WorkFlowInfoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  userId?: boolean
+  nodes?: boolean | Prisma.WorkFlowInfo$nodesArgs<ExtArgs>
+  connections?: boolean | Prisma.WorkFlowInfo$connectionsArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.WorkFlowInfoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  userId?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  userId?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workFlowInfo"]>
 
 export type WorkFlowInfoSelectScalar = {
   id?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  userId?: boolean
 }
 
-export type WorkFlowInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["workFlowInfo"]>
+export type WorkFlowInfoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["workFlowInfo"]>
+export type WorkFlowInfoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  nodes?: boolean | Prisma.WorkFlowInfo$nodesArgs<ExtArgs>
+  connections?: boolean | Prisma.WorkFlowInfo$connectionsArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.WorkFlowInfoCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type WorkFlowInfoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type WorkFlowInfoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
 
 export type $WorkFlowInfoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "WorkFlowInfo"
-  objects: {}
+  objects: {
+    nodes: Prisma.$NodePayload<ExtArgs>[]
+    connections: Prisma.$ConnectionsPayload<ExtArgs>[]
+    user: Prisma.$UserPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    createdAt: Date
+    updatedAt: Date
+    userId: string
   }, ExtArgs["result"]["workFlowInfo"]>
   composites: {}
 }
@@ -663,6 +1096,9 @@ readonly fields: WorkFlowInfoFieldRefs;
  */
 export interface Prisma__WorkFlowInfoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  nodes<T extends Prisma.WorkFlowInfo$nodesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WorkFlowInfo$nodesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  connections<T extends Prisma.WorkFlowInfo$connectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WorkFlowInfo$connectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConnectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -694,6 +1130,9 @@ export interface Prisma__WorkFlowInfoClient<T, Null = never, ExtArgs extends run
 export interface WorkFlowInfoFieldRefs {
   readonly id: Prisma.FieldRef<"WorkFlowInfo", 'String'>
   readonly name: Prisma.FieldRef<"WorkFlowInfo", 'String'>
+  readonly createdAt: Prisma.FieldRef<"WorkFlowInfo", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"WorkFlowInfo", 'DateTime'>
+  readonly userId: Prisma.FieldRef<"WorkFlowInfo", 'String'>
 }
     
 
@@ -710,6 +1149,10 @@ export type WorkFlowInfoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.
    * Omit specific fields from the WorkFlowInfo
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
   /**
    * Filter, which WorkFlowInfo to fetch.
    */
@@ -729,6 +1172,10 @@ export type WorkFlowInfoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Exte
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  /**
    * Filter, which WorkFlowInfo to fetch.
    */
   where: Prisma.WorkFlowInfoWhereUniqueInput
@@ -746,6 +1193,10 @@ export type WorkFlowInfoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.I
    * Omit specific fields from the WorkFlowInfo
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
   /**
    * Filter, which WorkFlowInfo to fetch.
    */
@@ -795,6 +1246,10 @@ export type WorkFlowInfoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  /**
    * Filter, which WorkFlowInfo to fetch.
    */
   where?: Prisma.WorkFlowInfoWhereInput
@@ -843,6 +1298,10 @@ export type WorkFlowInfoFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  /**
    * Filter, which WorkFlowInfos to fetch.
    */
   where?: Prisma.WorkFlowInfoWhereInput
@@ -886,6 +1345,10 @@ export type WorkFlowInfoCreateArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  /**
    * The data needed to create a WorkFlowInfo.
    */
   data: Prisma.XOR<Prisma.WorkFlowInfoCreateInput, Prisma.WorkFlowInfoUncheckedCreateInput>
@@ -919,6 +1382,10 @@ export type WorkFlowInfoCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    */
   data: Prisma.WorkFlowInfoCreateManyInput | Prisma.WorkFlowInfoCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -933,6 +1400,10 @@ export type WorkFlowInfoUpdateArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the WorkFlowInfo
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
   /**
    * The data needed to update a WorkFlowInfo.
    */
@@ -985,6 +1456,10 @@ export type WorkFlowInfoUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * Limit how many WorkFlowInfos to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -999,6 +1474,10 @@ export type WorkFlowInfoUpsertArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the WorkFlowInfo
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
   /**
    * The filter to search for the WorkFlowInfo to update in case it exists.
    */
@@ -1026,6 +1505,10 @@ export type WorkFlowInfoDeleteArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
+  /**
    * Filter which WorkFlowInfo to delete.
    */
   where: Prisma.WorkFlowInfoWhereUniqueInput
@@ -1046,6 +1529,54 @@ export type WorkFlowInfoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 /**
+ * WorkFlowInfo.nodes
+ */
+export type WorkFlowInfo$nodesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Node
+   */
+  select?: Prisma.NodeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Node
+   */
+  omit?: Prisma.NodeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NodeInclude<ExtArgs> | null
+  where?: Prisma.NodeWhereInput
+  orderBy?: Prisma.NodeOrderByWithRelationInput | Prisma.NodeOrderByWithRelationInput[]
+  cursor?: Prisma.NodeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NodeScalarFieldEnum | Prisma.NodeScalarFieldEnum[]
+}
+
+/**
+ * WorkFlowInfo.connections
+ */
+export type WorkFlowInfo$connectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Connections
+   */
+  select?: Prisma.ConnectionsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Connections
+   */
+  omit?: Prisma.ConnectionsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConnectionsInclude<ExtArgs> | null
+  where?: Prisma.ConnectionsWhereInput
+  orderBy?: Prisma.ConnectionsOrderByWithRelationInput | Prisma.ConnectionsOrderByWithRelationInput[]
+  cursor?: Prisma.ConnectionsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConnectionsScalarFieldEnum | Prisma.ConnectionsScalarFieldEnum[]
+}
+
+/**
  * WorkFlowInfo without action
  */
 export type WorkFlowInfoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1057,4 +1588,8 @@ export type WorkFlowInfoDefaultArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the WorkFlowInfo
    */
   omit?: Prisma.WorkFlowInfoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkFlowInfoInclude<ExtArgs> | null
 }

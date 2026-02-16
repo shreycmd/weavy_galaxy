@@ -11,5 +11,10 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+module.exports = {
+  images: {
+    domains: ["img.clerk.com"],
+  },
+};
 
 export default nextConfig;

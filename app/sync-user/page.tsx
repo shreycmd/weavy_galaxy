@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 export default async function SyncUser() {
   const { userId } = await auth();
