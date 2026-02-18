@@ -7,7 +7,7 @@ import {
 } from "@/trpc/init";
 import z from "zod";
 import { NodeType } from "@/app/generated/prisma/enums";
-import { Edge, Node } from "@xyflow/react";
+import { Edge, Node, Position } from "@xyflow/react";
 
 export const workflowrouter = createTRPCRouter({
   create: protectedProcedure.mutation(({ ctx }) => {
@@ -15,13 +15,12 @@ export const workflowrouter = createTRPCRouter({
       data: {
         name: generateSlug(3),
         userId: ctx.userId,
-        nodes: {
-          create: {
-            type: NodeType.Inital,
-            position: { x: 0, y: 0 },
-            name: NodeType.Inital,
-          },
-        },
+        // nodes: {
+        //   create: {
+        //     type: NodeType.Inital,
+        //     position: { x: 0, y: 0 },
+        //     name: NodeType.Inital,
+        //   },
       },
     });
   }),
@@ -33,6 +32,70 @@ export const workflowrouter = createTRPCRouter({
           id: input.id,
           userId: ctx.userId,
         },
+      });
+    }),
+  update: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        nodes: z.array(
+          z.object({
+            id: z.string(),
+            type: z.string().nullish(),
+            position: z.object({ x: z.number(), y: z.number() }),
+            data: z.record(z.string(), z.any()).optional(),
+          }),
+        ),
+        edges: z.array(
+          z.object({
+            source: z.string(),
+            target: z.string(),
+            sourceHandle: z.string().nullish(),
+            targetHandle: z.string().nullish(),
+          }),
+        ),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { id, nodes, edges } = input;
+      console.log("id", id);
+      console.log("node", nodes);
+      console.log("edges", edges);
+      const workflow = await db.workFlowInfo.findUniqueOrThrow({
+        where: { id, userId: ctx.userId },
+      });
+
+      return await db.$transaction(async (tx) => {
+        await tx.node.deleteMany({
+          where: { workflowId: id },
+        });
+
+        await tx.node.createMany({
+          data: nodes.map((node) => ({
+            id: node.id,
+            workflowId: id,
+            name: node.type || "unknown",
+            type: node.type as NodeType,
+            position: node.position,
+            data: node.data || {},
+          })),
+        });
+
+        await tx.connections.createMany({
+          data: edges.map((edge) => ({
+            workflowId: id,
+            fromNodeId: edge.source,
+            toNodeId: edge.target,
+            fromOutput: edge.sourceHandle || "main",
+            toInput: edge.targetHandle || "main",
+          })),
+        });
+
+        await tx.workFlowInfo.update({
+          where: { id },
+          data: { updatedAt: new Date() },
+        });
+        return workflow;
       });
     }),
   updateName: protectedProcedure

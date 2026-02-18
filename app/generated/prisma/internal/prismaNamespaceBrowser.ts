@@ -53,10 +53,10 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Project: 'Project',
-  UsertoProject: 'UsertoProject',
   WorkFlowInfo: 'WorkFlowInfo',
   Node: 'Node',
-  Connections: 'Connections'
+  Connections: 'Connections',
+  UsertoProject: 'UsertoProject'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -100,17 +100,6 @@ export const ProjectScalarFieldEnum = {
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const UsertoProjectScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId',
-  projectId: 'projectId'
-} as const
-
-export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)[keyof typeof UsertoProjectScalarFieldEnum]
-
-
 export const WorkFlowInfoScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -149,6 +138,17 @@ export const ConnectionsScalarFieldEnum = {
 } as const
 
 export type ConnectionsScalarFieldEnum = (typeof ConnectionsScalarFieldEnum)[keyof typeof ConnectionsScalarFieldEnum]
+
+
+export const UsertoProjectScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  projectId: 'projectId'
+} as const
+
+export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)[keyof typeof UsertoProjectScalarFieldEnum]
 
 
 export const SortOrder = {

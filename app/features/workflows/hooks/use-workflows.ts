@@ -55,3 +55,24 @@ export const useUpdateNameWorkflows = () => {
     }),
   );
 };
+
+export const useUpdateWorkflows = () => {
+  const trpc = useTRPC();
+
+  const queryClient = useQueryClient();
+  return useMutation(
+    trpc.workFlows.update.mutationOptions({
+      onSuccess: (data) => {
+        console.log("wk flow updated");
+
+        queryClient.invalidateQueries(trpc.workFlows.getMany.queryOptions());
+        queryClient.invalidateQueries(
+          trpc.workFlows.getone.queryOptions({ id: data.id }),
+        );
+      },
+      onError: () => {
+        console.log("wrror while changing the name");
+      },
+    }),
+  );
+};

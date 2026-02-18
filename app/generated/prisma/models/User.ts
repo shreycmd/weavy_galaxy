@@ -454,20 +454,6 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type UserCreateNestedOneWithoutUsertoProjectsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUsertoProjectsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutUsertoProjectsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUsertoProjectsInput
-  upsert?: Prisma.UserUpsertWithoutUsertoProjectsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUsertoProjectsInput, Prisma.UserUpdateWithoutUsertoProjectsInput>, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
-}
-
 export type UserCreateNestedOneWithoutWorkFlowInfosInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutWorkFlowInfosInput, Prisma.UserUncheckedCreateWithoutWorkFlowInfosInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutWorkFlowInfosInput
@@ -482,68 +468,18 @@ export type UserUpdateOneRequiredWithoutWorkFlowInfosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWorkFlowInfosInput, Prisma.UserUpdateWithoutWorkFlowInfosInput>, Prisma.UserUncheckedUpdateWithoutWorkFlowInfosInput>
 }
 
-export type UserCreateWithoutUsertoProjectsInput = {
-  id?: string
-  emailAddress: string
-  firstName?: string | null
-  lastName?: string | null
-  imageUrl?: string | null
-  credits?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  workFlowInfos?: Prisma.WorkFlowInfoCreateNestedManyWithoutUserInput
+export type UserCreateNestedOneWithoutUsertoProjectsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUsertoProjectsInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUncheckedCreateWithoutUsertoProjectsInput = {
-  id?: string
-  emailAddress: string
-  firstName?: string | null
-  lastName?: string | null
-  imageUrl?: string | null
-  credits?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  workFlowInfos?: Prisma.WorkFlowInfoUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutUsertoProjectsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
-}
-
-export type UserUpsertWithoutUsertoProjectsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutUsertoProjectsInput, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutUsertoProjectsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutUsertoProjectsInput, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
-}
-
-export type UserUpdateWithoutUsertoProjectsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  workFlowInfos?: Prisma.WorkFlowInfoUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutUsertoProjectsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  workFlowInfos?: Prisma.WorkFlowInfoUncheckedUpdateManyWithoutUserNestedInput
+export type UserUpdateOneRequiredWithoutUsertoProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUsertoProjectsInput
+  upsert?: Prisma.UserUpsertWithoutUsertoProjectsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUsertoProjectsInput, Prisma.UserUpdateWithoutUsertoProjectsInput>, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
 }
 
 export type UserCreateWithoutWorkFlowInfosInput = {
@@ -608,6 +544,70 @@ export type UserUncheckedUpdateWithoutWorkFlowInfosInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usertoProjects?: Prisma.UsertoProjectUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUsertoProjectsInput = {
+  id?: string
+  emailAddress: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  credits?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUsertoProjectsInput = {
+  id?: string
+  emailAddress: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  credits?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUsertoProjectsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
+}
+
+export type UserUpsertWithoutUsertoProjectsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUsertoProjectsInput, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUsertoProjectsInput, Prisma.UserUncheckedCreateWithoutUsertoProjectsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUsertoProjectsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUsertoProjectsInput, Prisma.UserUncheckedUpdateWithoutUsertoProjectsInput>
+}
+
+export type UserUpdateWithoutUsertoProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUsertoProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  emailAddress?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workFlowInfos?: Prisma.WorkFlowInfoUncheckedUpdateManyWithoutUserNestedInput
 }
 
 

@@ -386,10 +386,10 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   User: 'User',
   Project: 'Project',
-  UsertoProject: 'UsertoProject',
   WorkFlowInfo: 'WorkFlowInfo',
   Node: 'Node',
-  Connections: 'Connections'
+  Connections: 'Connections',
+  UsertoProject: 'UsertoProject'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "project" | "usertoProject" | "workFlowInfo" | "node" | "connections"
+    modelProps: "user" | "project" | "workFlowInfo" | "node" | "connections" | "usertoProject"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -554,80 +554,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ProjectCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ProjectCountAggregateOutputType> | number
-        }
-      }
-    }
-    UsertoProject: {
-      payload: Prisma.$UsertoProjectPayload<ExtArgs>
-      fields: Prisma.UsertoProjectFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.UsertoProjectFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.UsertoProjectFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        findFirst: {
-          args: Prisma.UsertoProjectFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.UsertoProjectFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        findMany: {
-          args: Prisma.UsertoProjectFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
-        }
-        create: {
-          args: Prisma.UsertoProjectCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        createMany: {
-          args: Prisma.UsertoProjectCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.UsertoProjectCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
-        }
-        delete: {
-          args: Prisma.UsertoProjectDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        update: {
-          args: Prisma.UsertoProjectUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        deleteMany: {
-          args: Prisma.UsertoProjectDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.UsertoProjectUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.UsertoProjectUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
-        }
-        upsert: {
-          args: Prisma.UsertoProjectUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
-        }
-        aggregate: {
-          args: Prisma.UsertoProjectAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateUsertoProject>
-        }
-        groupBy: {
-          args: Prisma.UsertoProjectGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UsertoProjectGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.UsertoProjectCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UsertoProjectCountAggregateOutputType> | number
         }
       }
     }
@@ -853,6 +779,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UsertoProject: {
+      payload: Prisma.$UsertoProjectPayload<ExtArgs>
+      fields: Prisma.UsertoProjectFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UsertoProjectFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UsertoProjectFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        findFirst: {
+          args: Prisma.UsertoProjectFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UsertoProjectFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        findMany: {
+          args: Prisma.UsertoProjectFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
+        }
+        create: {
+          args: Prisma.UsertoProjectCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        createMany: {
+          args: Prisma.UsertoProjectCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UsertoProjectCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
+        }
+        delete: {
+          args: Prisma.UsertoProjectDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        update: {
+          args: Prisma.UsertoProjectUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        deleteMany: {
+          args: Prisma.UsertoProjectDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UsertoProjectUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UsertoProjectUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>[]
+        }
+        upsert: {
+          args: Prisma.UsertoProjectUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UsertoProjectPayload>
+        }
+        aggregate: {
+          args: Prisma.UsertoProjectAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUsertoProject>
+        }
+        groupBy: {
+          args: Prisma.UsertoProjectGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsertoProjectGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UsertoProjectCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsertoProjectCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -917,17 +917,6 @@ export const ProjectScalarFieldEnum = {
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
-export const UsertoProjectScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId',
-  projectId: 'projectId'
-} as const
-
-export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)[keyof typeof UsertoProjectScalarFieldEnum]
-
-
 export const WorkFlowInfoScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -966,6 +955,17 @@ export const ConnectionsScalarFieldEnum = {
 } as const
 
 export type ConnectionsScalarFieldEnum = (typeof ConnectionsScalarFieldEnum)[keyof typeof ConnectionsScalarFieldEnum]
+
+
+export const UsertoProjectScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  projectId: 'projectId'
+} as const
+
+export type UsertoProjectScalarFieldEnum = (typeof UsertoProjectScalarFieldEnum)[keyof typeof UsertoProjectScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1194,10 +1194,10 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   project?: Prisma.ProjectOmit
-  usertoProject?: Prisma.UsertoProjectOmit
   workFlowInfo?: Prisma.WorkFlowInfoOmit
   node?: Prisma.NodeOmit
   connections?: Prisma.ConnectionsOmit
+  usertoProject?: Prisma.UsertoProjectOmit
 }
 
 /* Types for Logging */

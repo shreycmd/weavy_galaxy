@@ -11,27 +11,47 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import w from "@/public/download.png";
-import { ImageUpIcon, Text, VideoIcon } from "lucide-react";
+import { Brain, ImageUpIcon, Text, VideoIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useUpdateNameWorkflows } from "../features/workflows/hooks/use-workflows";
+import {
+  ImageInputNode,
+  LLMNode,
+  TextInputNode,
+  VideoInputNode,
+} from "../features/editor/components/editor";
 
 const itemsList = [
   {
     name: "Text Input",
     icon: Text,
+    type: "TextInputNode",
   },
   {
     name: "Image Input",
     icon: ImageUpIcon,
+    type: "ImageInputNode",
   },
   {
     name: "Video Input",
     icon: VideoIcon,
+    type: "VideoInputNode",
+  },
+  {
+    name: "LLM Node",
+    icon: Brain,
+    type: "LLMnode",
   },
 ];
 const Editorsidebar = () => {
   const { open, setOpen } = useSidebar();
+  const onDragStart = (event: React.DragEvent, type: string) => {
+    console.log("frpm ondragstart", type);
+    event.dataTransfer.setData("application/reactflow", type);
+    event.dataTransfer.effectAllowed = "move";
+  };
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -73,12 +93,16 @@ const Editorsidebar = () => {
           return (
             <SidebarMenuItem key={item.name}>
               <SidebarMenuButton
-                tooltip={item.name}
                 className="gap-x-4 h-10 px-4"
-                onClick={() => setOpen((open: any) => !open)}
+                onClick={() => setOpen((open) => !open)}
               >
                 <Icon className="size-4" />
-                <span>{item.name}</span>
+                <span
+                  draggable
+                  onDragStart={() => onDragStart(event, item.type)}
+                >
+                  {item.name}
+                </span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           );
@@ -89,15 +113,3 @@ const Editorsidebar = () => {
 };
 
 export default Editorsidebar;
-
-export const EditorName = ({ workflowsId }: { workflowsId: string }) => {
-  return (
-    <div className="w-fit ">
-      <Input
-        type="text"
-        defaultValue="untitled"
-        className="bg-[#212126] focus-visible:ring-0 focus-visible:ring-offset-0"
-      />
-    </div>
-  );
-};

@@ -10,7 +10,10 @@
 */
 
 export const NodeType = {
-  Inital: 'Inital'
+  TextInputNode: 'TextInputNode',
+  ImageInputNode: 'ImageInputNode',
+  VideoInputNode: 'VideoInputNode',
+  LLMnode: 'LLMnode'
 } as const
 
 export type NodeType = (typeof NodeType)[keyof typeof NodeType]

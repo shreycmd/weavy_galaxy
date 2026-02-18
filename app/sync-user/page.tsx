@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export default async function SyncUser() {
   const { userId } = await auth();
 
-  if (!userId) redirect("/signin");
+  if (!userId) return notFound();
 
   const user = await currentUser();
 
@@ -31,7 +31,7 @@ export default async function SyncUser() {
     },
   });
 
-  redirect("/");
+  return redirect("/workflows");
 }
 
 // import { db } from "@/lib/db";

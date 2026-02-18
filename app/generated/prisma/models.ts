@@ -10,8 +10,8 @@
  */
 export type * from './models/User'
 export type * from './models/Project'
-export type * from './models/UsertoProject'
 export type * from './models/WorkFlowInfo'
 export type * from './models/Node'
 export type * from './models/Connections'
+export type * from './models/UsertoProject'
 export type * from './commonInputTypes'

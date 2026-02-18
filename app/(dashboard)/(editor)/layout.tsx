@@ -5,17 +5,20 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
+import { ReactFlowProvider } from "@xyflow/react";
 
 import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SidebarProvider defaultOpen={false}>
-      <Editorsidebar />
-      <SidebarInset>
-        <main className="flex flex-1 flex-col p-6">{children}</main>
-      </SidebarInset>
-    </SidebarProvider>
+    <ReactFlowProvider>
+      <SidebarProvider defaultOpen={false}>
+        <Editorsidebar />
+        <SidebarInset>
+          <main className="flex flex-1 flex-col p-6">{children}</main>
+        </SidebarInset>
+      </SidebarProvider>
+    </ReactFlowProvider>
   );
 };
 

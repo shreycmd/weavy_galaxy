@@ -50,11 +50,6 @@ export type User = Prisma.UserModel
  */
 export type Project = Prisma.ProjectModel
 /**
- * Model UsertoProject
- * 
- */
-export type UsertoProject = Prisma.UsertoProjectModel
-/**
  * Model WorkFlowInfo
  * 
  */
@@ -69,3 +64,8 @@ export type Node = Prisma.NodeModel
  * 
  */
 export type Connections = Prisma.ConnectionsModel
+/**
+ * Model UsertoProject
+ * 
+ */
+export type UsertoProject = Prisma.UsertoProjectModel
