@@ -52,6 +52,8 @@ enum NodeType {
   ImageInputNode
   VideoInputNode
   LLMnode
+  CropimageNode
+  GetFrameFromVideoNode
 }
 
 model Node {
@@ -64,7 +66,6 @@ model Node {
   createdAt         DateTime      @default(now())
   updatedAt         DateTime      @updatedAt
   data              Json          @default("{}")
-  connections       Connections[]
   OutputConnections Connections[] @relation("FromNode")
   inputConnections  Connections[] @relation("ToNode")
 }
@@ -81,8 +82,6 @@ model Connections {
   toInput    String       @default("main")
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
-  node       Node?        @relation(fields: [nodeId], references: [id])
-  nodeId     String?
 
   @@unique([fromNodeId, toNodeId, fromOutput, toInput])
 }

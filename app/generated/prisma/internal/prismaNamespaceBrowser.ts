@@ -133,8 +133,7 @@ export const ConnectionsScalarFieldEnum = {
   fromOutput: 'fromOutput',
   toInput: 'toInput',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  nodeId: 'nodeId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type ConnectionsScalarFieldEnum = (typeof ConnectionsScalarFieldEnum)[keyof typeof ConnectionsScalarFieldEnum]

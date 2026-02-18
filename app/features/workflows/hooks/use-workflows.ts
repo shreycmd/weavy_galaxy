@@ -76,3 +76,18 @@ export const useUpdateWorkflows = () => {
     }),
   );
 };
+
+export const useExecuteWorkflow = () => {
+  const trpc = useTRPC();
+
+  return useMutation(
+    trpc.workFlows.execute.mutationOptions({
+      onSuccess: (data) => {
+        console.log(`wk flow executed ${data.name}`);
+      },
+      onError: () => {
+        console.log("wrror while executing workflow");
+      },
+    }),
+  );
+};

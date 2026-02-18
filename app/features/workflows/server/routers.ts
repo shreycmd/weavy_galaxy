@@ -8,8 +8,33 @@ import {
 import z from "zod";
 import { NodeType } from "@/app/generated/prisma/enums";
 import { Edge, Node, Position } from "@xyflow/react";
+import { execute } from "@/trigger/ai";
+import { task, tasks } from "@trigger.dev/sdk";
+import { executeNodeTask } from "@/trigger/executes";
 
 export const workflowrouter = createTRPCRouter({
+  execute: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        NodeId: z.string(),
+        context: z.record(z.string(), z.any()).optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      console.log(input);
+      const workflow = await db.workFlowInfo.findUniqueOrThrow({
+        where: { id: input.id, userId: ctx.userId },
+      });
+      await tasks.trigger<typeof executeNodeTask>("execute-node", {
+        workflowId: workflow.id,
+        name: workflow.name,
+        NodeId: input.NodeId,
+        context: input.context ?? {},
+      });
+      return workflow;
+    }),
+
   create: protectedProcedure.mutation(({ ctx }) => {
     return db.workFlowInfo.create({
       data: {

@@ -8,6 +8,7 @@ import {
 import { WorkFlowError } from "@/app/features/workflows/components/workflows";
 import { prefethWorkflowone } from "@/app/features/workflows/server/prfetch";
 import { HydrateClient } from "@/trpc/server";
+import { ReactFlowProvider } from "@xyflow/react";
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 interface Pageprops {
@@ -20,7 +21,9 @@ const WorkflowsId = async ({ params }: Pageprops) => {
     <HydrateClient>
       <ErrorBoundary fallback={<EditorError />}>
         <Suspense fallback={<EditorLoading />}>
-          <Editor workflowId={workflowsId} />
+          <ReactFlowProvider>
+            <Editor workflowId={workflowsId} />
+          </ReactFlowProvider>
         </Suspense>
       </ErrorBoundary>
     </HydrateClient>
